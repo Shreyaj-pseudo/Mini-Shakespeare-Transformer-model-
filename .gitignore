@@ -1,0 +1,24 @@
+# Checkpoints
+checkpoints/
+downloaded_model/
+src/check.py
+src/playground.py
+
+# Data
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pth
+
+# Environments
+.env
+venv/
+.venv/
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
