@@ -23,7 +23,7 @@ start_text = sys.argv[1] if len(sys.argv) > 1 else "Romeo"
 context = torch.tensor([[stoi[c] for c in start_text]], dtype=torch.long).to(device)
 model.eval()
 # Generate
-out = model.generate(context, max_new_tokens=300,
+out = model.generate(context, max_new_tokens=500,
                      temperature=0.5,
                      top_k=20)[0].tolist()
 

@@ -63,11 +63,17 @@ Checkpoints are saved regularly to `checkpoints/`. Loss decreased from ~2.2 init
 
 Example output:
 ```
-ROMEO:
-Make is whithat the souls preart, my well
-Thou have befe wan fear the glow't,
-How a stamparcurefess'd sing cond, for Pohen!
-```
+Romeo: the some shall the come forther,
+And a sire the make to hath a grach shall to what me
+that with fall so so shall and and sir,
+The be to he well the wo all the scand the dear night must the play.
+
+DUKE OF GRERLARENCE:
+Go, my leard, I so hen the here the death the fare your,
+This my his soul though are the canto be love to the with compered
+Of like sepore contle to my do my core
+To the see to this be with not the cause stand some,
+There to streeds he cold whom the so so to shore
 
 ---
 
