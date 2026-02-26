@@ -28,7 +28,7 @@ def estimate_loss():
     return sum(losses) / len(losses)
 
 start_iter = 0
-checkpoint_path = "checkpoints/checkpoint_79000.pt"
+checkpoint_path = "checkpoints/checkpoint_93000.pt"
 checkpoint = torch.load(checkpoint_path, map_location=device)
 
 model.load_state_dict(checkpoint['model_state_dict'])
