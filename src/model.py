@@ -18,8 +18,8 @@ class Head(nn.Module):
         k = self.key(x)   # (B,T,head_size)
         q = self.query(x) # (B,T,head_size)
         head_size = k.size(-1)
-        wei = q @ k.transpose(-2, -1) / (head_size ** 0.5)  # scaled dot-product
-        wei = wei.masked_fill(self.tril[:T, :T] == 0, float('-inf'))
+        wei = q @ k.transpose(-2, -1) / (head_size ** 0.5)  # scaled dot product to avoid large values
+        wei = wei.masked_fill(self.tril[:T, :T] == 0, float('-inf')) 
         wei = torch.softmax(wei, dim=-1)
         wei = self.dropout(wei)
         v = self.value(x)
@@ -31,7 +31,7 @@ class MultiHeadAttention(nn.Module):
     def __init__(self, num_heads, head_size):
         super().__init__()
         self.heads = nn.ModuleList([Head(head_size) for _ in range(num_heads)])
-        self.proj = nn.Linear(head_size * num_heads, n_embd)
+        self.proj = nn.Linear(head_size * num_heads, n_embd) 
         self.dropout = nn.Dropout(0.1)
         
     def forward(self, x):
@@ -57,10 +57,10 @@ class Block(nn.Module):
     def __init__(self, n_embd, n_head):
         super().__init__()
         head_size = n_embd // n_head
-        self.sa = MultiHeadAttention(n_head, head_size)
+        self.sa = MultiHeadAttention(n_head, head_size) 
         self.ffwd = FeedForward(n_embd)
         self.ln1 = nn.LayerNorm(n_embd)
-        self.ln2 = nn.LayerNorm(n_embd)
+        self.ln2 = nn.LayerNorm(n_embd) 
         
     def forward(self, x):
         x = x + self.sa(self.ln1(x))
@@ -78,12 +78,12 @@ class MiniGPT(nn.Module):
         
     def forward(self, idx, targets=None):
         B, T = idx.shape
-        tok_emb = self.token_embedding_table(idx)
+        tok_emb = self.token_embedding_table(idx) 
         pos_emb = self.position_embedding_table(torch.arange(T, device=idx.device))
         x = tok_emb + pos_emb
         x = self.blocks(x)
         x = self.ln_f(x)
-        logits = self.head(x)
+        logits = self.head(x) 
         
         if targets is None:
             loss = None
